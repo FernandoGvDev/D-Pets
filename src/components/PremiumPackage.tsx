@@ -50,7 +50,7 @@ export default function PremiumPackage() {
               initial={{ opacity: 0, y: 20, x: -50 }}
               animate={{ opacity: 1, y: 0, x: 0 }} // indo da esquerda para a direita
               transition={{
-                delay: i * 0.7,
+                delay: i * 0.9,
                 duration: 0.7,
               }}
             >
