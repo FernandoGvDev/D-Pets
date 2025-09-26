@@ -4,13 +4,14 @@ import { useState, useEffect } from "react";
 
 export default function Gallery() {
   const images = [
-    '/src/assets/img/pet1.jpg',
-    '/src/assets/img/pet2.jpg',
-    '/src/assets/img/pet3.jpg',
-    '/src/assets/img/pet4.jpg',
-    '/src/assets/img/pet5.jpg',
-    '/src/assets/img/pet6.jpg',
-  ];
+  '/img/pet1.jpg',
+  '/img/pet2.jpg',
+  '/img/pet3.jpg',
+  '/img/pet4.jpg',
+  '/img/pet5.jpg',
+  '/img/pet6.jpg',
+];
+
 
   const [current, setCurrent] = useState(0);
 

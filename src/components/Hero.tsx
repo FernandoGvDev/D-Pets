@@ -77,7 +77,7 @@ export default function Hero() {
           transition={{ duration: 1 }}
         >
           <img
-            src="/src/assets/img/hero-pet.png"
+            src="/img/hero-pet.png"
             alt="Pet feliz"
             className="w-3/4 mx-auto md:w-4/5 object-cover"
           />

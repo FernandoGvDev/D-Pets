@@ -24,7 +24,7 @@ export default function Header() {
         {/* Logo */}
         <a href="#home" className="flex items-center gap-3">
           <img
-            src="/src/assets/img/logo.png"
+            src="/img/logo.png"
             alt="D, Pets"
             className="w-14 h-14 rounded-full object-cover"
           />
