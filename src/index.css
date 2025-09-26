@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+/* estilos extras (opcional) */
+body {
+  @apply bg-white text-gray-800;
+  overflow-x: hidden; /* Bloqueia rolagem horizontal */
+}
+html, body {
+  overflow-x: hidden;  /* bloqueia horizontal */
+  width: 100vw;        /* garante que o body não extrapole a largura da viewport */
+}

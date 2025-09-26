@@ -1,0 +1,14 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+body {
+  overflow-x: hidden; /* Bloqueia rolagem horizontal */
+}
+
+html, body {
+  overflow-x: hidden;  /* bloqueia horizontal */
+  width: 100vw;        /* garante que o body não extrapole a largura da viewport */
+}
