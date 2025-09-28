@@ -6,13 +6,16 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        'dpets-pink': '#f7c6d9',
-        'dpets-mint': '#a8e6cf',
-        'dpets-gold': '#ffd700',
-        'dpets-green': '#34D399' // verde para CTA
-      }
-    },
+      keyframes: {
+        slideDown: {
+          "0%": { transform: "translateY(-100%)", opacity: "0" },
+          "100%": { transform: "translateY(0)", opacity: "1" },
+        },
+      },
+      animation: {
+        slideDown: "slideDown 0.6s ease-out",
+      },
+    }
   },
   plugins: [],
 }
