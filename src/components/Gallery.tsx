@@ -1,6 +1,6 @@
 // src/components/Gallery.tsx
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Gallery() {
   const images = [
@@ -13,23 +13,30 @@ export default function Gallery() {
   ];
 
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
+  const [direction, setDirection] = useState(0); // 1 = próximo, -1 = anterior
+  const intervalRef = useRef<number | null>(null);
 
-  // Troca automática a cada 4 segundos
-  useEffect(() => {
-    if (!autoPlay) return;
-    const interval = setInterval(() => {
+  // Troca automática
+  const startAutoPlay = () => {
+    stopAutoPlay();
+    intervalRef.current = window.setInterval(() => {
       setDirection(1);
       setCurrent((prev) => (prev + 1) % images.length);
     }, 4000);
-    return () => clearInterval(interval);
-  }, [autoPlay, images.length]);
+  };
 
+  const stopAutoPlay = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+  };
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => stopAutoPlay();
+  }, []);
+
+  // Determina imagens visíveis
   const getVisibleImages = () => {
-    if (window.innerWidth >= 768) {
-      return [images[current], images[(current + 1) % images.length]];
-    }
+    if (window.innerWidth >= 768) return [images[current], images[(current + 1) % images.length]];
     return [images[current]];
   };
 
@@ -42,23 +49,17 @@ export default function Gallery() {
     return () => window.removeEventListener("resize", handleResize);
   }, [current]);
 
-  // handleDragEnd sem o parâmetro event
-  const handleDragEnd = (info: any) => {
+  // Drag
+  const handleDragEnd = (_: any, info: any) => {
     if (info.offset.x < -50) {
       setDirection(1);
       setCurrent((current + 1) % images.length);
-      setAutoPlay(true);
+      startAutoPlay();
     } else if (info.offset.x > 50) {
       setDirection(-1);
       setCurrent((current - 1 + images.length) % images.length);
-      setAutoPlay(true);
+      startAutoPlay();
     }
-  };
-
-  const variants = {
-    enter: (dir: number) => ({ x: dir > 0 ? 300 : -300, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (dir: number) => ({ x: dir > 0 ? -300 : 300, opacity: 0 }),
   };
 
   return (
@@ -70,51 +71,51 @@ export default function Gallery() {
         Galeria de Pets
       </h2>
 
-      <div className="relative w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl">
-        <AnimatePresence initial={false} custom={direction} mode="wait">
-          {visibleImages.map((src, idx) => (
+      <div className="relative w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-4">
+        <AnimatePresence custom={direction} mode="wait">
+          {visibleImages.map((src) => (
             <motion.img
               key={src}
               src={src}
-              alt={`Pet ${current + idx + 1}`}
-              className="w-full h-80 object-contain bg-white rounded-2xl cursor-grab"
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.6 }}
+              alt="Pet"
+              className="w-full h-80 object-contain bg-white rounded-2xl"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
-              onDragStart={() => setAutoPlay(false)}
               onDragEnd={handleDragEnd}
+              custom={direction}
+              initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
+              transition={{ duration: 0.8 }}
             />
           ))}
         </AnimatePresence>
+      </div>
 
-        {/* Controles manuais */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-3 z-10">
-          {images.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => {
-                setCurrent(idx);
-                setAutoPlay(true);
-              }}
-              className={`w-4 h-4 rounded-full transition-colors ${
-                current === idx ? "bg-pink-600 shadow-lg" : "bg-pink-200"
-              }`}
-            />
-          ))}
-        </div>
+      {/* Controles manuais */}
+      <div className="mt-6 flex justify-center gap-3">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => {
+              setDirection(idx > current ? 1 : -1);
+              setCurrent(idx);
+              startAutoPlay();
+            }}
+            className={`w-4 h-4 rounded-full transition-colors ${
+              current === idx ? "bg-pink-600 shadow-lg" : "bg-pink-200"
+            }`}
+          />
+        ))}
+      </div>
 
-        {/* CTA Instagram */}
+      {/* CTA Instagram */}
+      <div className="mt-8 text-center">
         <a
-          href="https://www.instagram.com/banhoetosaagromania"
+          href="https://www.instagram.com/seuperfil"
           target="_blank"
           rel="noopener noreferrer"
-          className="absolute top-4 right-4 bg-pink-600 text-white px-4 py-2 rounded-full shadow hover:bg-pink-700 transition"
+          className="inline-block bg-pink-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-700 transition"
         >
           Veja mais no Instagram
         </a>
