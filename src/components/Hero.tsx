@@ -26,7 +26,7 @@ export default function Hero() {
             <span className="text-yellow-400">elegância</span>
           </h1>
 
-          <p className="text-lg text-gray-900 max-w-lg font-[Charm]">
+          <p className="text-3xl text-gray-900 max-w-lg font-[Charm]">
             Banho, tosa e cuidados especiais para deixar seu pet feliz e
             saudável, em um ambiente acolhedor e sofisticado
           </p>
