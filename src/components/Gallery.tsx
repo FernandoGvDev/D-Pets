@@ -38,9 +38,9 @@ export default function Gallery() {
   return (
     <section
       id="produtos"
-      className="relative py-20 bg-gradient-to-b from-white via-pink-50 to-white overflow-hidden"
+      className="relative py-20 overflow-hidden"
     >
-      <h2 className="text-4xl font-serif font-bold text-pink-600 mb-12 text-center">
+      <h2 className="text-4xl font-serif font-bold text-purple-700 mb-12 text-center">
         Galeria de Pets
       </h2>
 
@@ -71,7 +71,7 @@ export default function Gallery() {
           href="https://www.instagram.com/seuperfil"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block bg-pink-600 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-700 transition"
+          className="inline-block bg-purple-700 text-white px-6 py-3 rounded-full shadow-lg hover:bg-pink-700 transition"
         >
           Veja mais no Instagram
         </a>

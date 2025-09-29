@@ -28,7 +28,7 @@ export default function Services() {
   return (
     <section
       id="servicos"
-      className="relative py-20 bg-gradient-to-b from-white via-pink-50 to-white overflow-hidden"
+      className="relative py-20 overflow-hidden"
     >
       {/* ✅ Pegada animada no fundo (detalhe elegante) */}
       <motion.div
@@ -40,8 +40,8 @@ export default function Services() {
       </motion.div>
 
       {/* ✅ Título central */}
-      <h2 className="text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-14 text-center">
-        Nossos <span className="text-pink-600">Serviços</span>
+      <h2 className="text-4xl lg:text-5xl font-serif font-bold text-white mb-14 text-center">
+        Nossos <span className="text-white">Serviços</span>
       </h2>
 
       {/* ✅ Cards de serviços */}
@@ -57,7 +57,7 @@ export default function Services() {
           >
             {/* Ícone decorativo */}
             <div className="absolute -top-6 -left-6 bg-pink-100 p-3 rounded-2xl shadow-md group-hover:scale-110 transition-transform">
-              <PawPrint className="text-pink-600 w-6 h-6" />
+              <PawPrint className="text-purple-700 w-6 h-6" />
             </div>
 
             {/* Título */}
@@ -76,8 +76,8 @@ export default function Services() {
               className={`inline-block px-6 py-3 rounded-full font-medium shadow-md transition-all
                 ${
                   item.type === "whats"
-                    ? "bg-pink-600 text-white hover:bg-pink-700"
-                    : "border border-pink-600 text-pink-600 hover:bg-pink-50"
+                    ? "bg-purple-700 text-white hover:bg-pink-700"
+                    : "border border-purple-700 text-purple-700 hover:bg-pink-50"
                 }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}

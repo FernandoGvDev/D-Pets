@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
       <main className="flex-1 mt-16 md:mt-0">
         <Hero />
-        <div className="max-w-6xl mx-auto px-4 space-y-16 py-12">
+        <div className="max-w-6xl mx-auto px-4 space-y-16 py-12 bg-amber-400">
           <Services />
           <PremiumPackage />
           <Gallery />

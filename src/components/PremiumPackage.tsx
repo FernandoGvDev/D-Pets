@@ -13,7 +13,7 @@ export default function PremiumPackage() {
   ];
 
   return (
-    <section className="relative py-20 px-6 bg-gradient-to-r from-white via-pink-50 to-white overflow-hidden">
+    <section className="relative py-20 px-6 overflow-hidden">
       
       {/* Container principal */}
       <div className="max-w-4xl mx-auto relative z-10 space-y-8">
@@ -26,7 +26,7 @@ export default function PremiumPackage() {
           viewport={{ once: true }}
           transition={{ duration: 1 }}
         >
-          <h3 className="text-4xl lg:text-5xl font-serif font-bold text-pink-600 mb-4">
+          <h3 className="text-4xl lg:text-5xl font-serif font-bold text-white mb-4">
             Pacote <span className="text-purple-700">Prêmio</span>
           </h3>
           <p className="text-gray-600 text-lg lg:text-xl max-w-2xl mx-auto md:mx-0">
@@ -46,7 +46,7 @@ export default function PremiumPackage() {
               viewport={{ once: true }}
               transition={{ delay: i * 0.3, type: "spring", stiffness: 100 }}
             >
-              <PawPrint className="w-6 h-6 mx-auto mb-2 text-pink-600 animate-bounce-slow" />
+              <PawPrint className="w-6 h-6 mx-auto mb-2 text-purple-700 animate-bounce-slow" />
               <p className="font-medium text-gray-700">{b}</p>
             </motion.div>
           ))}

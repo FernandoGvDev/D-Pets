@@ -10,7 +10,7 @@ export default function Footer() {
             📌 Informações da empresa
         ============================= */}
         <div className="flex flex-col gap-3">
-          <h4 className="text-2xl font-bold text-pink-600">D, Pets Estética Animal</h4>
+          <h4 className="text-2xl font-bold text-purple-700">D, Pets Estética Animal</h4>
           <p className="text-sm text-gray-600">Rua Castelo Branco 297 (Loja 02) - Bela Vista, Alvorada</p>
           
           <p className="text-sm flex items-center gap-2">

@@ -4,7 +4,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 export default function Location() {
   return (
-    <section id="localizacao" className="relative py-20 bg-gradient-to-b from-white via-pink-50 to-white overflow-hidden">
+    <section id="localizacao" className="relative py-20 rounded-3xl bg-gradient-to-b from-white  via-pink-50 to-white overflow-hidden">
       
       <div className="max-w-6xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center gap-12">
         
@@ -42,12 +42,12 @@ export default function Location() {
           transition={{ duration: 1 }}
         >
           {/* Título com ícone e pulse */}
-          <h3 className="text-4xl lg:text-5xl font-serif font-bold text-pink-600 flex items-center gap-3">
+          <h3 className="text-4xl lg:text-5xl font-serif font-bold text-purple-700 flex items-center gap-3">
             <motion.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ repeat: Infinity, duration: 2 }}
             >
-              <FaMapMarkerAlt className="text-pink-600" />
+              <FaMapMarkerAlt className="text-purple-700" />
             </motion.div>
             Nossa Localização
           </h3>
@@ -60,7 +60,7 @@ export default function Location() {
           {/* Botão WhatsApp chamativo */}
           <motion.a
             href="https://wa.me/5551984057577?text=Olá!%20Quero%20agendar%20ou%20tirar%20dúvidas"
-            className="inline-flex items-center gap-3 bg-pink-600 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-2xl"
+            className="inline-flex items-center gap-3 bg-purple-700 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-2xl"
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(107,33,168,0.6)" }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
