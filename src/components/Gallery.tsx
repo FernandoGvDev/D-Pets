@@ -1,65 +1,38 @@
 // src/components/Gallery.tsx
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Gallery() {
-  const images = [
-    "/img/pet1.jpg",
-    "/img/pet2.jpg",
-    "/img/pet3.jpg",
-    "/img/pet4.jpg",
-    "/img/pet5.jpg",
-    "/img/pet6.jpg",
-  ];
+  // Importa todas as imagens da pasta /public/img
+  const images = Object.values(
+    import.meta.glob("/public/img/modelos/*.{jpg,jpeg,png,gif}", { eager: true, as: "url" })
+  );
 
-  const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(0); // 1 = próximo, -1 = anterior
+  const carouselRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
 
-  // Troca automática
-  const startAutoPlay = () => {
-    stopAutoPlay();
-    intervalRef.current = window.setInterval(() => {
-      setDirection(1);
-      setCurrent((prev) => (prev + 1) % images.length);
-    }, 4000);
-  };
-
-  const stopAutoPlay = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  };
-
+  // Auto play (scroll automático)
   useEffect(() => {
     startAutoPlay();
     return () => stopAutoPlay();
   }, []);
 
-  // Determina imagens visíveis
-  const getVisibleImages = () => {
-    if (window.innerWidth >= 768) return [images[current], images[(current + 1) % images.length]];
-    return [images[current]];
+  const startAutoPlay = () => {
+    stopAutoPlay();
+    intervalRef.current = window.setInterval(() => {
+      if (carouselRef.current) {
+        const nextScroll =
+          carouselRef.current.scrollLeft + carouselRef.current.offsetWidth;
+        if (nextScroll >= carouselRef.current.scrollWidth) {
+          carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          carouselRef.current.scrollTo({ left: nextScroll, behavior: "smooth" });
+        }
+      }
+    }, 4000);
   };
 
-  const [visibleImages, setVisibleImages] = useState(getVisibleImages());
-
-  useEffect(() => {
-    const handleResize = () => setVisibleImages(getVisibleImages());
-    window.addEventListener("resize", handleResize);
-    setVisibleImages(getVisibleImages());
-    return () => window.removeEventListener("resize", handleResize);
-  }, [current]);
-
-  // Drag
-  const handleDragEnd = (_: any, info: any) => {
-    if (info.offset.x < -50) {
-      setDirection(1);
-      setCurrent((current + 1) % images.length);
-      startAutoPlay();
-    } else if (info.offset.x > 50) {
-      setDirection(-1);
-      setCurrent((current - 1 + images.length) % images.length);
-      startAutoPlay();
-    }
+  const stopAutoPlay = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
   return (
@@ -71,41 +44,24 @@ export default function Gallery() {
         Galeria de Pets
       </h2>
 
-      <div className="relative w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl grid grid-cols-1 md:grid-cols-2 gap-4">
-        <AnimatePresence custom={direction} mode="wait">
-          {visibleImages.map((src) => (
-            <motion.img
-              key={src}
-              src={src}
-              alt="Pet"
-              className="w-full h-80 object-contain bg-white rounded-2xl"
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              onDragEnd={handleDragEnd}
-              custom={direction}
-              initial={{ x: direction > 0 ? 300 : -300, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: direction > 0 ? -300 : 300, opacity: 0 }}
-              transition={{ duration: 0.8 }}
-            />
-          ))}
-        </AnimatePresence>
-      </div>
-
-      {/* Controles manuais */}
-      <div className="mt-6 flex justify-center gap-3">
-        {images.map((_, idx) => (
-          <button
+      {/* Carrossel */}
+      <div
+        ref={carouselRef}
+        className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
+        onMouseEnter={stopAutoPlay}
+        onMouseLeave={startAutoPlay}
+      >
+        {images.map((src, idx) => (
+          <div
             key={idx}
-            onClick={() => {
-              setDirection(idx > current ? 1 : -1);
-              setCurrent(idx);
-              startAutoPlay();
-            }}
-            className={`w-4 h-4 rounded-full transition-colors ${
-              current === idx ? "bg-pink-600 shadow-lg" : "bg-pink-200"
-            }`}
-          />
+            className="min-w-[80%] md:min-w-[40%] lg:min-w-[30%] snap-center rounded-2xl overflow-hidden bg-white shadow-lg"
+          >
+            <img
+              src={src}
+              alt={`Pet ${idx + 1}`}
+              className="w-full h-80 object-cover"
+            />
+          </div>
         ))}
       </div>
 
