@@ -8,6 +8,7 @@ import PremiumPackage from '../components/PremiumPackage';
 import Gallery from '../components/Gallery';
 import Footer from '../components/Footer';
 import Location from '../components/Location';
+import Camera from '../components/camera';
 
 export default function Home() {
   const location = useLocation();
@@ -24,11 +25,14 @@ export default function Home() {
     }
   }, [location]);
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-amber-400">
       <Header />
       <main className="flex-1 mt-16 md:mt-0">
         <Hero />
-        <div className="max-w-6xl mx-auto px-4 space-y-16 py-12 bg-amber-400">
+        <div className="max-w-6xl mx-auto px-4 space-y-16 py-12 ">
+          <Camera
+            onView={() => console.log('abrir visualização')}
+          />
           <div id='serviços'><Services /></div>
           <PremiumPackage />
           <Gallery />

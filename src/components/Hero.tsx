@@ -6,7 +6,8 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative bg-purple-600 py-20 mt-0 lg:mt-20 overflow-hidden"
+      className="relative bg-gradient-to-b from-purple-800 to-pink-800 sm:bg-gradient-to-l py-20 mt-0 lg:mt-20 overflow-hidden"
+
     >
       <div className="container mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
         {/* ============================
@@ -20,7 +21,7 @@ export default function Hero() {
             <span className="text-yellow-400">elegância</span>
           </h1>
 
-          <p className="text-gray-900 max-w-lg">
+          <p className="text-gray-800 max-w-lg">
             Banho, tosa e cuidados especiais para deixar seu pet feliz e
             saudável, em um ambiente acolhedor e sofisticado
           </p>
