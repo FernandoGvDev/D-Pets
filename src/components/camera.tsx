@@ -1,114 +1,95 @@
 import { motion } from "framer-motion";
+import { Cctv } from "lucide-react";
 
 export type CameraProps = {
   onView?: () => void;
 };
 
-/**
- * Camera
- * Arquivo: src/components/Camera.tsx
- * - Entrada animada (fade + slight rise) com framer-motion
- * - Paleta: roxo + rosa + branco
- * - Responsivo: centralizado em mobile, maior em desktop
- */
 export default function Camera({ onView }: CameraProps) {
   return (
-    <motion.div
-      // animação de entrada
-      initial={{ opacity: 0, y: 12, scale: 0.985 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="w-full flex justify-center"
+    <motion.section
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      className="w-full flex justify-center py-10"
     >
-      <div
+      <motion.div
         className="
-          relative
-          w-full max-w-xl
-          mx-4
-          md:mx-auto
-          border-4 border-purple-600
-          rounded-3xl
-          p-6
+          relative w-full max-w-5xl mx-4 md:mx-auto
+          rounded-3xl p-8
           bg-gradient-to-b from-white via-purple-50 to-pink-50
-          shadow-[0_12px_40px_rgba(139,92,246,0.18)]
-          flex flex-col items-center text-center
+          shadow-[0_12px_40px_rgba(139,92,246,0.15)]
+          border-2 border-purple-200/70
+          flex flex-col md:flex-row items-center justify-between
+          overflow-hidden
         "
-        aria-live="polite"
+        whileHover={{ scale: 1.01 }}
+        transition={{ type: 'spring', stiffness: 200 }}
       >
-        {/* Decorative glow */}
+        {/* Ícone fixo no canto superior esquerdo */}
+        <div className="border-2 border-purple-600 text-purple-800 p-3 rounded-full shadow-lg">
+          <Cctv size={28} />
+        </div>
+
+
+        {/* Coluna da imagem */}
         <div
-          aria-hidden
-          className="pointer-events-none absolute -inset-1 rounded-3xl blur-[18px] opacity-40"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(139,92,246,0.18), rgba(236,72,153,0.12))",
-            zIndex: 0,
-          }}
-        />
-
-        {/* Content container (on top of glow) */}
-        <div className="relative z-10 w-full flex flex-col items-center">
-          {/* Top decorative paw (small) */}
-          <div className="hidden md:flex items-center justify-center mb-3">
-            <svg
-              width="36"
-              height="36"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="opacity-90"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M6.5 8.5c0-1.933 1.567-3.5 3.5-3.5s3.5 1.567 3.5 3.5S11.933 12 10 12 6.5 10.433 6.5 8.5zM3 11c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3zM17 8c0-1.657 1.343-3 3-3s3 1.343 3 3-1.343 3-3 3-3-1.343-3-3zM8 16a4 4 0 118 0 4 4 0 01-8 0z"
-                fill="#7c3aed"
-              />
-            </svg>
-          </div>
-
-          {/* Imagem / câmera - tamanho responsivo */}
+          className="
+            relative w-full md:w-1/2
+            mt-5 md:mt-0 flex justify-center items-center
+          "
+        >
           <div
             className="
               w-[240px] h-[240px]
               md:w-[320px] md:h-[320px]
-              lg:w-[380px] lg:h-[380px]
+              lg:w-[360px] lg:h-[360px]
               rounded-2xl overflow-hidden
-              bg-gradient-to-br from-purple-50 to-pink-50
+              bg-gradient-to-br from-purple-100 to-pink-100
               flex items-center justify-center
-              border-2 border-white/40
-              shadow-inner
+              border-2 border-white/50 shadow-inner
+              relative
             "
           >
+            <motion.div
+              className="absolute inset-0 rounded-2xl"
+              animate={{ opacity: [0.2, 0.4, 0.2] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              style={{
+                background:
+                  "radial-gradient(circle at 30% 30%, rgba(147,51,234,0.2), transparent 70%)",
+              }}
+            />
             <img
               src="/img/qrCode.jpeg"
               alt="Pet em atendimento"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-2xl"
               draggable={false}
             />
           </div>
+        </div>
 
-          {/* Title */}
-          <h3 className="text-purple-800 font-extrabold text-lg md:text-2xl mt-5">
-            🐾 Veja seu Pet
+
+        {/* Coluna de texto */}
+        <div className="relative z-10 w-full md:w-1/2 flex flex-col text-center md:text-left items-center md:items-start gap-4 px-4">
+          <h3 className="text-purple-800 font-extrabold text-2xl md:text-3xl">
+            🐾 Veja seu Pet em Tempo Real
           </h3>
-
-          <p className="text-gray-700 text-sm md:text-base mt-1">
-            em atendimento em <strong>tempo real</strong>
+          <p className="text-gray-700 text-base max-w-md">
+            Acompanhe seu pet durante o atendimento com nossa câmera ao vivo.
+            Segurança e transparência para deixar você mais tranquilo.
           </p>
-
-
-          {/* CTA */}
-          <button
+          <motion.button
             onClick={onView}
-            aria-label="Ver pet em tempo real"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ type: "spring", stiffness: 200 }}
             className="
-              mt-5 flex items-center justify-center gap-3
-              px-6 py-3
-              rounded-2xl
-              text-white font-semibold text-sm md:text-base
+              mt-4 flex items-center justify-center gap-3
+              px-7 py-3 rounded-2xl
+              text-white font-semibold text-base
               bg-gradient-to-r from-purple-600 via-pink-500 to-purple-700
-              shadow-[0_10px_30px_rgba(139,92,246,0.28)]
-              transform transition
-              hover:scale-[1.02] active:scale-[0.99]
+              shadow-[0_10px_30px_rgba(139,92,246,0.3)]
               focus:outline-none focus:ring-4 focus:ring-purple-200
             "
           >
@@ -118,7 +99,6 @@ export default function Camera({ onView }: CameraProps) {
               viewBox="0 0 24 24"
               fill="none"
               aria-hidden
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"
@@ -138,14 +118,13 @@ export default function Camera({ onView }: CameraProps) {
               />
             </svg>
             <span>Ver transmissão</span>
-          </button>
+          </motion.button>
 
-          <p className="text-xs text-gray-400 mt-4 max-w-sm">
-            Toque em “Ver transmissão” para abrir a câmera do seu pet em uma nova
-            aba ou modal.
+          <p className="text-xs text-gray-400 mt-2">
+            Toque em “Ver transmissão” para abrir a câmera do seu pet em uma nova aba.
           </p>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </motion.section>
   );
 }

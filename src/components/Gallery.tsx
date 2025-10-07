@@ -2,15 +2,14 @@
 import { useEffect, useRef } from "react";
 
 export default function Gallery() {
-  // Importa todas as imagens da pasta /public/img
-  const images = Object.values(
-    import.meta.glob("/public/img/modelos/*.{jpg,jpeg,png,gif}", { eager: true, as: "url" })
+  const imageModules: Record<string, string> = import.meta.glob("/public/img/modelos/*.{jpg,jpeg,png,gif}",
+    { eager: true, query: "?url", import: "default" }
   );
+  const images = Object.values(imageModules);
 
   const carouselRef = useRef<HTMLDivElement>(null);
   const intervalRef = useRef<number | null>(null);
 
-  // Auto play (scroll automático)
   useEffect(() => {
     startAutoPlay();
     return () => stopAutoPlay();
@@ -36,15 +35,11 @@ export default function Gallery() {
   };
 
   return (
-    <section
-      id="produtos"
-      className="relative py-20 overflow-hidden"
-    >
+    <section id="produtos" className="relative py-20 overflow-hidden">
       <h2 className="text-4xl font-serif font-bold text-purple-700 mb-12 text-center">
         Galeria de Pets
       </h2>
 
-      {/* Carrossel */}
       <div
         ref={carouselRef}
         className="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
@@ -56,16 +51,11 @@ export default function Gallery() {
             key={idx}
             className="min-w-[80%] md:min-w-[40%] lg:min-w-[30%] snap-center rounded-2xl overflow-hidden bg-white shadow-lg"
           >
-            <img
-              src={src}
-              alt={`Pet ${idx + 1}`}
-              className="w-full h-80 object-cover"
-            />
+            <img src={src} alt={`Pet ${idx + 1}`} className="w-full h-80 object-cover" />
           </div>
         ))}
       </div>
 
-      {/* CTA Instagram */}
       <div className="mt-8 text-center">
         <a
           href="https://www.instagram.com/seuperfil"
