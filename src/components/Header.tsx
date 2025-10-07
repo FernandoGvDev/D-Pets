@@ -34,7 +34,7 @@ export default function Header() {
             <img
               src="/img/logo.png"
               alt="D, Pets"
-              className="w-14 h-14 rounded-full object-cover transition-transform duration-500 hover:scale-105"
+              className="w-auto h-20 rounded-full object-cover transition-transform duration-500 hover:scale-105"
             />
             <span
               className={`font-bold text-lg transition-colors duration-500 ${

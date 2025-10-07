@@ -6,7 +6,6 @@ import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import Banho from '../components/Banho';
-import PremiumPackage from '../components/PremiumPackage';
 import Gallery from '../components/Gallery';
 import Footer from '../components/Footer';
 import Location from '../components/Location';
@@ -31,36 +30,37 @@ export default function Home() {
       <Header />
       <main className="flex-1 overflow-hidden">
         <Hero />
-        <img
-          src="/img/hero-pet.png"
-          alt="Decoração"
-          className="
-          absolute
-          bottom-[-150px]   /* move a imagem um pouco pra fora (ajuste conforme quiser) */
-          right-[1px]    /* encosta no canto direito */
-          w-50           /* largura da imagem (ajuste à vontade) */
-          z-20             /* fica acima dos componentes */
-          pointer-events-none /* evita bloquear cliques nos componentes */
-        "
-        />
-        <div className="max-w-6xl mx-auto space-y-16 py-12 overflow-x-hidden">
+        <div className="relative">
+  {/* Conteúdo principal do hero aqui */}
+
+  <img
+    src="/img/hero-pet.png"
+    alt="Decoração"
+    className="
+      absolute bottom-0 right-0
+      w-40 sm:w-48 md:w-60 lg:w-72
+      translate-y-1/4 sm:translate-y-1/3 md:translate-y-1/2
+      z-20
+      pointer-events-none
+      block lg:hidden 
+    "
+  />
+</div>
+        <div className="mx-auto space-y-16 py-12 overflow-x-hidden">
           <Camera
             onView={() => console.log('abrir visualização')}
           />
             <Banho />
-            <img
-          src="/img/preto.png"
-          alt="Decoração"
-          className="
-          absolute
-          bottom-[-2740px]   /* move a imagem um pouco pra fora (ajuste conforme quiser) */
-          left-[-30px]    /* encosta no canto direito */
-          w-80           /* largura da imagem (ajuste à vontade) */
-          z-20             /* fica acima dos componentes */
-          pointer-events-none /* evita bloquear cliques nos componentes */
-        "/>
-          <div id='serviços' className="pt-10"><Services /></div>
-          <PremiumPackage />
+            <div className="relative flex justify-center -mt-40 z-20 pointer-events-none">
+  <img
+    src="/img/preto.png"
+    alt="Decoração"
+    className="w-80 max-w-full sm:w-96 md:w-1/3 lg:w-1/4"
+  />
+</div>
+          <div id='serviços'>
+            <Services />
+            </div>
           <Gallery />
           <Location />
         </div>

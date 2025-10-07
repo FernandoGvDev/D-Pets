@@ -61,6 +61,9 @@ export default function Footer() {
       <div className="text-center text-xs text-gray-400 py-4 border-t border-gray-200">
         © {new Date().getFullYear()} D, Pets Estética Animal. Todos os direitos reservados.
       </div>
+      <div className="text-center text-xs text-gray-400 pt-2">
+        <a href="https://codificaweb.pages.dev/">Desenvolvido por CodificaWeb</a>
+      </div>
     </footer>
   );
 }

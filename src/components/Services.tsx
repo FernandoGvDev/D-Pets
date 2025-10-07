@@ -28,7 +28,7 @@ export default function Services() {
   return (
     <section
       id="servicos"
-      className="relative py-20 overflow-hidden"
+      className="relative overflow-hidden"
     >
       {/* ✅ Pegada animada no fundo (detalhe elegante) */}
       <motion.div
