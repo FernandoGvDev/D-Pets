@@ -40,7 +40,7 @@ export default function Hero() {
         {/* Grid Desktop: duas colunas */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Coluna de Texto */}
-          <div className="space-y-6 text-white ml-10">
+          <div className="space-y-6 text-white ">
             <h1 className="text-4xl lg:text-6xl font-serif font-extrabold leading-tight">
               Cuidando do seu{" "}
               <span className="text-[#FFD700]">melhor amigo </span>
