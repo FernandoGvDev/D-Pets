@@ -34,7 +34,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative bg-gradient-to-br from-[#A78BFA] to-[#F9A8D4] py-24 overflow-hidden"
+      className="relative py-24 overflow-hidden bg-[url('/img/hero-fundo.png')] bg-no-repeat bg-cover bg-bottom"
     >
       <div className="container mx-auto px-6 lg:px-12 relative z-10 pt-10">
         {/* Grid Desktop: duas colunas */}
