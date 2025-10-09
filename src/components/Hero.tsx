@@ -42,15 +42,17 @@ export default function Hero() {
           {/* Coluna de Texto */}
           <div className="space-y-6 text-white ">
             <h1 className="text-4xl lg:text-6xl font-serif font-extrabold leading-tight">
-              Cuidando do seu{" "}
-              <span className="text-[#FFD700]">melhor amigo </span>
-              com carinho e{" "}
-              <span className="text-[#FFD700]">elegância</span>
+              Banhos humanizados, cuidando do seu {" "}
+              <span className="text-[#FFD700]">Pet </span>
+              com {" "}
+              <span className="text-[#FFD700]">Amor </span>
+              e {" "}
+              <span className="text-[#FFD700]">Carinho </span>
             </h1>
 
             <p className="text-gray-800 max-w-lg leading-relaxed">
               Banho, tosa e cuidados especiais para deixar seu pet feliz e
-              saudável, em um ambiente acolhedor e sofisticado.
+              saudável, em um ambiente acolhedor.
             </p>
 
             {/* WhatsApp e Instagram lado a lado */}
