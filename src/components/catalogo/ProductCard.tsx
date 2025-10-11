@@ -6,7 +6,7 @@ type Product = {
   name: string;
   price: number;
   img: string;
-  category: string;
+  category: string[];
 };
 
 export default function ProductCard({ id, name, price, img, category }: Product) {

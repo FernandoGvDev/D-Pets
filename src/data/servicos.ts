@@ -8,13 +8,27 @@ export interface PacoteBanho {
 
 export const pacotesBanho: PacoteBanho[] = [
   {
+    id: "banho-quinzenal",
+    titulo: "Clubinho quinzenal",
+    descricao: "Perfeito para manter a higiene e o bem-estar do seu pet com frequência regular.",
+    itens: [
+      "Banho completo a cada 15 dias",
+      "1 Tosa higiênica",
+      "1 hidratação",
+      "Corte de unhas e limpeza de ouvidos",
+      "Enfeite com laço ou gravatinha",
+      "Perfume"
+    ]
+      ,
+  },
+  {
     id: "banho-mensal",
-    titulo: "Pacote Mensal",
+    titulo: "Clubinho Mensal",
     descricao:
       "Ideal para quem quer praticidade e cuidado contínuo. Inclui tudo para manter o pet sempre limpo e saudável.",
     itens: [
-      "4 banhos por mês (1 por semana, mesmo dia e horário fixo)",
-      "1 tosa higiênica por mês",
+      "3 banhos por mês (1 por semana, mesmo dia e horário fixo)",
+      "2 tosa higiênica por mês",
       "1 hidratação mensal",
       "Corte de unhas e limpeza de ouvidos sempre que necessário",
       "Escovação dental em todos os banhos",

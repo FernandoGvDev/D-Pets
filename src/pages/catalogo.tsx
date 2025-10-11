@@ -1,208 +1,178 @@
-// src/pages/Catalogo.tsx
 import { useState, useEffect } from "react";
-import ProductCard from "../components/catalogo/ProductCard";
-import { products } from "../data/products";
-import Header from "../components/Header";
-import { useCart } from "../context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import Header from "../components/Header";
+import ProductCard from "../components/catalogo/ProductCard";
+import { products } from "../data/products";
 
+// Carrega automaticamente todos os banners da pasta /assets/banner
 const banners: string[] = Object.values(
   import.meta.glob("../assets/banner/*.{jpg,jpeg,png}", { eager: true, import: "default" })
 );
 
-const categorias = [
-  "Todos",
-  "Ração",
-  "Brinquedos",
-  "Higiene",
-  "Acessórios",
-  "Alimento",
-  "Cuidado",
-];
+// Opções de filtro de categoria e tipo de animal
+const categorias = ["Todos", "Ração", "Brinquedos", "Higiene", "Acessórios", "Alimento", "Cuidado"];
 const animais = ["Todos", "Cachorro", "Gato", "Animais Silvestres"];
 
 export default function Catalogo() {
-  const [categoriaAtiva, setCategoriaAtiva] = useState("Todos");
-  const [animalAtivo, setAnimalAtivo] = useState("Todos");
+  // Estados de filtro e controle do carrinho lateral
+  const [categoria, setCategoria] = useState("Todos");
+  const [animal, setAnimal] = useState("Todos");
   const [bannerIndex, setBannerIndex] = useState(0);
-  const [drawerOpen, setDrawerOpen] = useState(false); // controla o carrinho lateral
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
+  // Funções do contexto do carrinho
   const { cart, removeFromCart, clearCart } = useCart();
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+  // Troca automática dos banners a cada 5 segundos
   useEffect(() => {
-    const interval = setInterval(() => {
-      setBannerIndex((prev) => (prev + 1) % banners.length);
-    }, 5000);
-    return () => clearInterval(interval);
+    const timer = setInterval(() => setBannerIndex((i) => (i + 1) % banners.length), 5000);
+    return () => clearInterval(timer);
   }, []);
 
-  const produtosFiltrados = products.filter((p) => {
-    const categoriaMatch =
-      categoriaAtiva === "Todos" || p.category.includes(categoriaAtiva);
-    const animalMatch = animalAtivo === "Todos" || p.animal.includes(animalAtivo);
-    return categoriaMatch && animalMatch;
+  // Filtragem dos produtos com base na categoria e tipo de animal selecionado
+  const filtrados = products.filter((p) => {
+    const matchCat = categoria === "Todos" || p.category.includes(categoria);
+    const matchAni = animal === "Todos" || p.animal.includes(animal);
+    return matchCat && matchAni;
   });
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-white">
+      {/* Cabeçalho fixo */}
       <Header />
 
-      {/* Banner */}
-      <section className="py-10 px-4 bg-purple-600">
-        <div className="max-w-6xl mx-auto text-center mb-6">
-          <h1 className="text-4xl font-bold text-white mb-2">Promoções PetShop</h1>
-          <p className="text-lg text-yellow-400 font-semibold">
-            Ofertas especiais para cuidar do seu melhor amigo 🐾
-          </p>
-        </div>
+      {/* Banner rotativo */}
+      {banners.length > 0 && (
+        <section className="relative w-full h-64 sm:h-96 overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={banners[bannerIndex]}
+              src={banners[bannerIndex]}
+              alt="Banner promocional"
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.8 }}
+              className="absolute w-full h-full object-cover"
+            />
+          </AnimatePresence>
+        </section>
+      )}
 
-        {banners.length > 0 && (
-          <div className="relative w-full h-64 sm:h-96 overflow-hidden rounded-xl shadow-lg max-w-6xl mx-auto">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={banners[bannerIndex]}
-                src={banners[bannerIndex]}
-                alt={`Banner ${bannerIndex + 1}`}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.8 }}
-                className="absolute w-full h-full object-cover"
-              />
-            </AnimatePresence>
-
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
-              {banners.map((_, i) => (
-                <span
-                  key={i}
-                  onClick={() => setBannerIndex(i)}
-                  className={`w-3 h-3 rounded-full cursor-pointer ${i === bannerIndex ? "bg-yellow-400" : "bg-white/50"
-                    }`}
-                />
-              ))}
-            </div>
-          </div>
-        )}
-      </section>
-
-      {/* Filtros */}
-      <section className="py-6 bg-gray-100">
-        <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-3 px-4 mb-4">
+      {/* Filtros de categoria e animal */}
+      <div className="py-6 bg-gray-100">
+        {/* Filtro de categoria */}
+        <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-3 px-4 mb-3">
           {categorias.map((cat) => (
             <button
               key={cat}
-              onClick={() => setCategoriaAtiva(cat)}
-              className={`px-5 py-2 rounded-full font-semibold transition ${categoriaAtiva === cat
-                  ? "bg-purple-600 text-white"
-                  : "bg-white border border-purple-600 text-purple-600 hover:bg-purple-100"
-                }`}
+              onClick={() => setCategoria(cat)}
+              className={`px-5 py-2 rounded-full font-semibold transition ${
+                categoria === cat ? "bg-purple-600 text-white" : "bg-white border border-purple-600 text-purple-600"
+              }`}
             >
               {cat}
             </button>
           ))}
         </div>
+
+        {/* Filtro de tipo de animal */}
         <div className="max-w-6xl mx-auto flex flex-wrap justify-center gap-3 px-4">
           {animais.map((ani) => (
             <button
               key={ani}
-              onClick={() => setAnimalAtivo(ani)}
-              className={`px-5 py-2 rounded-full font-semibold transition ${animalAtivo === ani
-                  ? "bg-yellow-400 text-purple-900"
-                  : "bg-white border border-yellow-400 text-yellow-400 hover:bg-yellow-100"
-                }`}
+              onClick={() => setAnimal(ani)}
+              className={`px-5 py-2 rounded-full font-semibold transition ${
+                animal === ani ? "bg-yellow-400 text-purple-900" : "bg-white border border-yellow-400 text-yellow-400"
+              }`}
             >
               {ani}
             </button>
           ))}
         </div>
+      </div>
+
+      {/* Catálogo de produtos */}
+      <section className="py-10 px-4 max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {/* Renderiza cada produto filtrado */}
+        {filtrados.map((p) => (
+          <ProductCard key={p.id} {...p} />
+        ))}
       </section>
 
-      {/* Catálogo */}
-      <section className="py-10 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {produtosFiltrados.map((p) => (
-            <ProductCard
-              key={p.id}
-              id={p.id}
-              name={p.name}
-              price={p.price}
-              img={p.img}
-              category={p.category.join(", ")}
-            />
-          ))}
-        </div>
-      </section>
-
-      {/* Botão flutuante do carrinho */}
+      {/* Botão flutuante para abrir o carrinho */}
       <button
         onClick={() => setDrawerOpen(true)}
-        className="fixed bottom-6 right-6 z-50 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition flex items-center justify-center"
+        className="fixed bottom-6 right-6 z-50 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition flex items-center"
       >
         <ShoppingCart className="w-6 h-6" />
+        {/* Mostra número de itens no carrinho */}
         {cart.length > 0 && (
-          <span className="ml-1 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+          <span className="ml-1 bg-red-500 text-xs w-5 h-5 flex items-center justify-center rounded-full">
             {cart.length}
           </span>
         )}
       </button>
 
-      {/* Drawer do Carrinho */}
+      {/* Drawer (carrinho lateral) */}
       <AnimatePresence>
         {drawerOpen && (
           <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ type: "tween", duration: 0.3 }}
+            transition={{ duration: 0.3 }}
             className="fixed top-0 right-0 h-full w-80 bg-white shadow-xl z-50 p-6 flex flex-col"
           >
+            {/* Cabeçalho do carrinho */}
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-bold text-gray-800">Carrinho</h2>
-              <button onClick={() => setDrawerOpen(false)} className="text-gray-500 hover:text-gray-800">
-                ✕
-              </button>
+              <h2 className="text-xl font-bold">Carrinho</h2>
+              <button onClick={() => setDrawerOpen(false)} className="text-gray-500 hover:text-gray-800">✕</button>
             </div>
 
+            {/* Se o carrinho estiver vazio */}
             {cart.length === 0 ? (
               <p className="text-gray-600">Seu carrinho está vazio.</p>
             ) : (
+              // Lista de produtos no carrinho
               <div className="flex-1 flex flex-col justify-between">
                 <ul className="space-y-3 overflow-y-auto">
                   {cart.map((item) => (
-                    <li key={item.id} className="flex justify-between items-center bg-gray-50 p-3 rounded-lg shadow">
+                    <li key={item.id} className="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
                       <div>
                         <p className="font-semibold">{item.name} (x{item.quantity})</p>
                         <p className="text-sm text-gray-600">R$ {(item.price * item.quantity).toFixed(2)}</p>
                       </div>
-                      <button
-                        onClick={() => removeFromCart(item.id)}
-                        className="text-red-500 hover:text-red-700"
-                      >
+                      <button onClick={() => removeFromCart(item.id)} className="text-red-500 hover:text-red-700">
                         Remover
                       </button>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-4 flex justify-between items-center font-bold text-lg text-gray-800">
+                {/* Total e botões de ação */}
+                <div className="mt-4 flex justify-between text-lg font-bold">
                   <span>Total:</span>
                   <span>R$ {total.toFixed(2)}</span>
                 </div>
 
+                {/* Link para finalizar no WhatsApp */}
                 <Link
                   to="/checkout"
-                  className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg text-center hover:bg-green-700 transition"
+                  className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg text-center hover:bg-green-700"
                   onClick={() => setDrawerOpen(false)}
                 >
-                  Finalizar Pedido
+                  Finalizar no WhatsApp
                 </Link>
 
+                {/* Botão para limpar o carrinho */}
                 <button
                   onClick={clearCart}
-                  className="mt-2 w-full bg-gray-300 text-gray-800 py-2 rounded-lg hover:bg-gray-400 transition"
+                  className="mt-2 w-full bg-gray-300 text-gray-800 py-2 rounded-lg hover:bg-gray-400"
                 >
                   Limpar Carrinho
                 </button>
