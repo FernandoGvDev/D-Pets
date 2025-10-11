@@ -20,7 +20,6 @@ export default function Catalogo() {
   // Estados de filtro e controle do carrinho lateral
   const [categoria, setCategoria] = useState("Todos");
   const [animal, setAnimal] = useState("Todos");
-  const [bannerIndex, setBannerIndex] = useState(0);
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   // Funções do contexto do carrinho
@@ -28,10 +27,6 @@ export default function Catalogo() {
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   // Troca automática dos banners a cada 5 segundos
-  useEffect(() => {
-    const timer = setInterval(() => setBannerIndex((i) => (i + 1) % banners.length), 5000);
-    return () => clearInterval(timer);
-  }, []);
 
   // Filtragem dos produtos com base na categoria e tipo de animal selecionado
   const filtrados = products.filter((p) => {
@@ -44,24 +39,6 @@ export default function Catalogo() {
     <div className="min-h-screen bg-white">
       {/* Cabeçalho fixo */}
       <Header />
-
-      {/* Banner rotativo */}
-      {banners.length > 0 && (
-        <section className="relative w-full h-64 sm:h-96 overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={banners[bannerIndex]}
-              src={banners[bannerIndex]}
-              alt="Banner promocional"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.8 }}
-              className="absolute w-full h-full object-cover"
-            />
-          </AnimatePresence>
-        </section>
-      )}
 
       {/* Filtros de categoria e animal */}
       <div className="py-6 bg-gray-100">
