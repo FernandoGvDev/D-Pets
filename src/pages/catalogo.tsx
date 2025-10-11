@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -6,11 +6,6 @@ import { useCart } from "../context/CartContext";
 import Header from "../components/Header";
 import ProductCard from "../components/catalogo/ProductCard";
 import { products } from "../data/products";
-
-// Carrega automaticamente todos os banners da pasta /assets/banner
-const banners: string[] = Object.values(
-  import.meta.glob("../assets/banner/*.{jpg,jpeg,png}", { eager: true, import: "default" })
-);
 
 // Opções de filtro de categoria e tipo de animal
 const categorias = ["Todos", "Ração", "Brinquedos", "Higiene", "Acessórios", "Alimento", "Cuidado"];
