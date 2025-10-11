@@ -589,10 +589,10 @@ export const products: Product[] = [
   description: "Shampoo e condicionador 2 em 1 Hello Kitty Chococat, limpeza e hidratação em um só produto.",
 },
 {
-  id: 65,
+  id: 655,
   name: "Condicionador Hidratante Hello Kitty Pochacco",
   price: 27.9,
-  img: "/img/produtos/65.jpg",
+  img: "/img/produtos/655.jpg",
   category: ["Higiene"],
   animal: ["Todos"],
   description: "Condicionador Hello Kitty Pochacco, hidratação e perfume suave para pelos macios.",
