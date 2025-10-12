@@ -1,8 +1,10 @@
 // src/components/Gallery.tsx
-import { useEffect, useRef } from "react";
-import { FaInstagram, FaPaw } from "react-icons/fa";
+import { useEffect, useRef, useState } from "react";
+import { FaInstagram, FaPaw, FaTimes } from "react-icons/fa";
 
 export default function Gallery() {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const imageModules: Record<string, string> = import.meta.glob(
     "/public/img/modelos/*.{jpg,jpeg,png,gif}",
     { eager: true, query: "?url", import: "default" }
@@ -36,12 +38,34 @@ export default function Gallery() {
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
-  // 🖐️ Pausa automática no toque (mobile)
   const handleTouchStart = () => stopAutoPlay();
   const handleTouchEnd = () => startAutoPlay();
 
+  // 🔍 Funções de visualização em tela cheia
+  const openImage = (src: string) => {
+    setSelectedImage(src);
+    window.history.pushState({ modal: true }, ""); // adiciona ao histórico
+  };
+
+  const closeImage = () => {
+    setSelectedImage(null);
+    if (window.history.state?.modal) window.history.back(); // volta no histórico
+  };
+
+  // 🧱 Fecha o modal se o usuário tocar no botão "voltar" do celular
+  useEffect(() => {
+    const handlePopState = () => {
+      if (selectedImage) setSelectedImage(null);
+    };
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [selectedImage]);
+
   return (
-    <section id="produtos" className="relative py-20 overflow-hidden bg-gradient-to-b from-amber-400 to-amber-500">
+    <section
+      id="produtos"
+      className="relative py-20 overflow-hidden bg-gradient-to-b from-amber-400 to-amber-500"
+    >
       <h2 className="text-4xl font-serif font-bold text-purple-700 mb-12 text-center">
         Galeria de Pets
       </h2>
@@ -57,7 +81,8 @@ export default function Gallery() {
         {images.map((src, idx) => (
           <div
             key={idx}
-            className="relative min-w-[80%] md:min-w-[40%] lg:min-w-[30%] snap-center rounded-2xl overflow-hidden bg-white shadow-lg border-[4px] border-purple-300"
+            className="relative min-w-[80%] md:min-w-[40%] lg:min-w-[30%] snap-center rounded-2xl overflow-hidden bg-white shadow-lg border-[4px] border-purple-300 cursor-pointer"
+            onClick={() => openImage(src)}
           >
             {/* Moldura de patinhas */}
             <FaPaw className="absolute top-2 left-2 text-purple-300 text-xl opacity-70" />
@@ -86,6 +111,27 @@ export default function Gallery() {
           Veja mais no Instagram
         </a>
       </div>
+
+      {/* 🖼️ Modal da imagem em tela cheia */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"
+          onClick={closeImage}
+        >
+          <button
+            className="absolute top-6 right-6 text-white text-3xl hover:text-amber-400 transition"
+            onClick={closeImage}
+          >
+            <FaTimes />
+          </button>
+          <img
+            src={selectedImage}
+            alt="Imagem ampliada"
+            className="max-w-full max-h-[90vh] rounded-lg shadow-lg object-contain"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </section>
   );
 }
