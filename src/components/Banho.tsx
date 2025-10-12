@@ -18,7 +18,7 @@ export default function Banho() {
       <div className="relative z-10 max-w-6xl mx-auto space-y-16 pt-80 md:pt-150 pb-20">
         {/* 🐾 Título da seção */}
         <h2 className="banho text-4xl md:text-5xl text- text-center text-amber-400 drop-shadow-md">
-          Clubinhos do Banhos
+          Clubinhos e Serviços Estéticos
         </h2>
 
 
