@@ -32,7 +32,7 @@ export const pacotesBanho: PacoteBanho[] = [
       "1 Hidratação Luxo",
       "Corte de unhas sempre que necessário",
       "Limpeza de ouvidos e escovação em todos os banhos",
-      "Concorre a sorteios e premios D'Pet toda",
+      "Concorre a sorteios e premios D'Pet",
       "Tosas Completas com 20% de desconto",
     ],
   },
