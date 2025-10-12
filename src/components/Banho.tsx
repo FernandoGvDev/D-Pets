@@ -62,10 +62,7 @@ export default function Banho() {
                   {pacote.titulo}
                 </h3>
 
-                {/* 💬 Subtítulo com destaque */}
-                <p className="text-center text-white/90 italic mb-4">
-                  {isPopular ? "💸 Economize e dê cuidado completo!" : "Cuidado e carinho em cada banho!"}
-                </p>
+            
 
                 {/* 🐶 Lista de itens */}
                 <ul className="list-none space-y-2 mb-6 text-white/95 text-sm">
