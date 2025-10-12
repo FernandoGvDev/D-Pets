@@ -22,15 +22,18 @@ export const pacotesBanho: PacoteBanho[] = [
   },
   {
     id: "banho-mensal",
-    titulo: "Clubinho Mensal",
+    titulo: "Clubinho Super Premium",
     descricao:
       "Ideal para quem quer praticidade e cuidado contínuo. Inclui tudo para manter o pet sempre limpo e saudável.",
     itens: [
-      "4 banhos no mês (1 por semana, mesmo dia e horário fixo)",
-      "1 tosa higiênica no mês",
-      "1 hidratação mensal",
-      "Corte de unhas e limpeza de ouvidos sempre que necessário",
-      "Escovação dental em todos",
+      "4 Banhos, 1 por semana",
+      "2 Tosa Higiênica",
+      "1 Banho de Ozônio",
+      "1 Hidratação Luxo",
+      "Corte de unhas sempre que necessário",
+      "Limpeza de ouvidos e escovação em todos os banhos",
+      "Concorre a sorteios e premios D'Pet toda",
+      "Tosas Completas com 20% de desconto",
     ],
   },
   {
