@@ -54,7 +54,7 @@ export default function Footer() {
         ============================= */}
         <div className="flex flex-col gap-3 text-sm text-gray-600">
           <p>Atendimento dedicado para você e seu pet.</p>
-          <p className="mt-2">Horário: 09:00 - 15:00 / 19:15 - 22:00</p>
+          <p className="mt-2">Terça a Sábado - Horário: 08:30 - 17:00</p>
         </div>
       </div>
 
