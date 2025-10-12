@@ -12,7 +12,7 @@ export default function Services() {
       type: "whats",
     },
     {
-      title: "Petriscos & Ração",
+      title: "Petiscos & Ração",
       desc: "Marcas selecionadas e snacks saudáveis para seu pet.",
       link: "/catalogo", // vai pro catálogo
       type: "catalogo",
