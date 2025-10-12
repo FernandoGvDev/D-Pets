@@ -35,7 +35,7 @@ export const pacotesBanho: PacoteBanho[] = [
   },
   {
     id: "banho-simples",
-    titulo: "Clubinho Simples",
+    titulo: "Banho Simples",
     descricao: "Perfeito para manter a higiene e o bem-estar do seu pet.",
     itens: [
       "Banho (Pré shampoo, shampoo, condicionador)",
