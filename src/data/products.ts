@@ -185,7 +185,7 @@ export const products: Product[] = [
     id: 21,
     name: "Floxiclin antibiótico 50mg 10 comprimidos caes e gatos",
     price: 38.9,
-    img: "/img/produtos/21.jpg",
+    img: "/img/produtos/212.jpg",
     category: ["Cuidado"],
     animal: ["Todos"],
     description: "Antibiótico para cães e gatos.",
