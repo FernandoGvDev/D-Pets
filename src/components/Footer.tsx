@@ -19,7 +19,7 @@ export default function Footer() {
           </p>
           <p className="text-sm flex items-center gap-2">
             <FaInstagram className="text-[#E1306C]" /> 
-            <a className="hover:underline text-[#E1306C]" href="https://www.instagram.com/banhoetosaagromania">@banhoetosaagromania</a>
+            <a className="hover:underline text-[#E1306C]" href="https://www.instagram.com/banhoetosaagromania">@PetShop D'Pets</a>
           </p>
 
           {/* Link para catálogo */}
