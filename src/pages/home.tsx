@@ -2,12 +2,10 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import Header from '../components/Header';
 import Hero from '../components/Hero';
 import Services from '../components/Services';
 import Banho from '../components/Banho';
 import Gallery from '../components/Gallery';
-import Footer from '../components/Footer';
 import Location from '../components/Location';
 import Camera from '../components/camera';
 
@@ -27,7 +25,6 @@ export default function Home() {
   }, [location]);
   return (
     <div id="inicio" className="min-h-screen flex flex-col bg-amber-400 overflow-hidden">
-      <Header />
       <main className="flex-1 overflow-hidden">
         <Hero />
         <div className="relative">
@@ -65,7 +62,6 @@ export default function Home() {
           <Location />
         </div>
       </main>
-      <div id="contato"></div><Footer />
     </div>
   );
 }

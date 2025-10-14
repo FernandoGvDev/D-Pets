@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaWhatsapp, FaStore } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -13,14 +13,13 @@ export default function Header() {
   }, []);
 
   const menuItems = [
-    { name: "Sobre", id: "sobre" },
-    { name: "Serviços", id: "servicos" },
-    { name: "Contato", id: "contato" },
+    { name: "Sobre", path: "/sobre" },
+    { name: "Serviços", path: "/#servicos" },
+    { name: "Contato", path: "/#contato" },
   ];
 
   return (
     <header className="fixed top-0 w-full z-50 overflow-hidden">
-      {/* Barra principal */}
       <div
         className={`transition-all duration-500 ${
           scrolled
@@ -33,7 +32,7 @@ export default function Header() {
           <Link to="/" className="flex items-center gap-3">
             <img
               src="/img/logo.png"
-              alt="D, Pets"
+              alt="D'Pets"
               className="w-auto h-20 rounded-full object-cover transition-transform duration-500 hover:scale-105"
             />
             <span
@@ -46,28 +45,32 @@ export default function Header() {
           </Link>
 
           {/* Menu Desktop */}
-          <nav className="hidden md:flex items-center gap-6 text-sm font-medium ">
-            <Link
+          <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
+            <NavLink
               to="/"
-              className={`relative transition-colors ${
-                scrolled ? "text-gray-800" : "text-white"
-              } group`}
+              className={({ isActive }) =>
+                `relative transition-colors group ${
+                  scrolled ? "text-gray-800" : "text-white"
+                } ${isActive ? "font-semibold text-yellow-400" : ""}`
+              }
             >
               Início
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-purple-600 transition-all group-hover:w-full"></span>
-            </Link>
+            </NavLink>
 
             {menuItems.map((item) => (
-              <a
-                key={item.id}
-                href={`/#${item.id}`}
-                className={`relative transition-colors group ${
-                  scrolled ? "text-gray-800" : "text-white"
-                }`}
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  `relative transition-colors group ${
+                    scrolled ? "text-gray-800" : "text-white"
+                  } ${isActive ? "font-semibold text-yellow-400" : ""}`
+                }
               >
                 {item.name}
                 <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-purple-600 transition-all group-hover:w-full"></span>
-              </a>
+              </NavLink>
             ))}
 
             {/* Botão Ver Loja */}
@@ -125,22 +128,23 @@ export default function Header() {
           }`}
         >
           <div className="px-4 py-4 flex flex-col gap-4 bg-purple-500/80 backdrop-blur-md shadow-md">
-            <Link
-              to="/#inicio"
+            <NavLink
+              to="/"
               onClick={() => setOpen(false)}
               className="text-gray-800 transition-colors hover:text-purple-600"
             >
               Início
-            </Link>
+            </NavLink>
+
             {menuItems.map((item) => (
-              <a
-                key={item.id}
-                href={`/#${item.id}`}
+              <NavLink
+                key={item.path}
+                to={item.path}
                 onClick={() => setOpen(false)}
-                className="text-gray-800 text-left transition-colors hover:text-purple-600"
+                className="text-gray-800 transition-colors hover:text-purple-600"
               >
                 {item.name}
-              </a>
+              </NavLink>
             ))}
 
             <Link
@@ -163,7 +167,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Barra de scroll ativo (opcional premium) */}
       <div className="absolute bottom-0 left-0 w-full h-[3px] bg-purple-600 transition-all duration-300"></div>
     </header>
   );

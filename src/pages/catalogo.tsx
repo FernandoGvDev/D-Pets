@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingCart, X, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import Header from "../components/Header";
 import { products } from "../data/products";
 
 const categorias = ["Todos", "Ração", "Brinquedos", "Higiene", "Acessórios", "Alimento", "Cuidado"];
@@ -59,7 +58,6 @@ export default function Catalogo() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
 
       {/* Filtros */}
       <div className="py-6 pt-40 bg-gray-100">
