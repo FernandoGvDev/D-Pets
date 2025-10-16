@@ -14,7 +14,7 @@ export default function Historia() {
           className="flex justify-center"
         >
           <img
-            src="https://tse2.mm.bing.net/th/id/OIP.4f9M1JOHsFKW4GzbWRlMQwHaEK?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" // Coloque sua imagem em public/img/
+            src="/img/sobre.jpeg" // Coloque sua imagem em public/img/
             alt="Equipe D'Pets"
             className="rounded-3xl shadow-2xl object-cover w-full max-w-md hover:scale-105 transition-transform duration-500"
           />
