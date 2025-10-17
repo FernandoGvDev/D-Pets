@@ -3,7 +3,7 @@ import { Scissors, Sparkles, Heart } from "lucide-react";
 
 export default function GroomerSobre() {
     const mensagem = encodeURIComponent(
-    "Olá! 👋 Gostaria de agendar um horário para banho e tosa com a Letícia ✂️🐶"
+    "Olá! 👋 Gostaria de agendar um horário para banho e tosa com a Tia Carol ✂️🐶"
   );
   return (
     <section className="relative py-20 bg-gradient-to-r from-pink-100 to-purple-100 overflow-hidden">
@@ -23,11 +23,11 @@ export default function GroomerSobre() {
           </div>
 
           <h2 className="text-3xl md:text-4xl font-extrabold text-purple-900 mb-4">
-            Nossa Groomer <span className="text-pink-500">Maria</span> ✂️
+            Nossa Groomer <span className="text-pink-500">Carol</span> ✂️
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed mb-6">
-            Maria é especialista em <span className="font-semibold text-purple-700">banho, tosa e estética animal</span>,
+             Carol é especialista em <span className="font-semibold text-purple-700">banho, tosa e estética animal</span>,
             e acredita que cada pet deve ser cuidado com paciência e empatia.
             Sua delicadeza e amor pelos bichinhos tornam cada atendimento uma experiência tranquila e feliz para os pets.
           </p>
