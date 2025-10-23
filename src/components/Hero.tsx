@@ -52,7 +52,7 @@ export default function Hero() {
 
             <p className="text-gray-800 max-w-lg leading-relaxed">
               Banho, tosa e cuidados especiais para deixar seu pet feliz e
-              saudável, em um ambiente acolhedor.
+              saudável. Serviços de higiene e estética para cães e gatos em ambiente acolhedor.
             </p>
 
             {/* WhatsApp e Instagram lado a lado */}
@@ -61,6 +61,7 @@ export default function Hero() {
                 href="https://wa.me/5551984057577?text=Olá%20quero%20agendar%20um%20serviço"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Agendar banho e tosa pelo WhatsApp"
                 className="flex-1 flex items-center justify-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:scale-105 transition-transform"
               >
                 <FaWhatsapp className="text-2xl" />
@@ -68,9 +69,10 @@ export default function Hero() {
               </a>
 
               <a
-                href="https://www.instagram.com/seuperfil"
+                href="https://www.instagram.com/banhoetosaagromania"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Ver fotos e novidades no Instagram"
                 className="flex-1 flex items-center justify-center gap-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:scale-105 transition-transform"
               >
                 <FaInstagram className="text-2xl" />
@@ -96,7 +98,7 @@ export default function Hero() {
           <div className="hidden lg:flex justify-center">
             <img
               src="/img/hero-pc.png"
-              alt="Decoração"
+              alt="Pet feliz após banho e tosa humanizados na D-Pets"
               className="w-80 lg:w-96 xl:w-[28rem]"
             />
           </div>

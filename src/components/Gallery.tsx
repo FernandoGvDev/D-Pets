@@ -1,8 +1,15 @@
 // src/components/Gallery.tsx
 import { useEffect, useRef, useState } from "react";
 import { FaInstagram, FaPaw, FaTimes } from "react-icons/fa";
+import useSEO from "../hooks/useSEO";
 
 export default function Gallery() {
+  // ✅ SEO da seção
+  useSEO(
+    "Galeria de Pets D-Pets - Fotos de Banho, Tosa e Cuidados",
+    "Confira nossa galeria de pets felizes após banho, tosa e cuidados especiais. Veja mais fotos no Instagram e inspire-se!"
+  );
+
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const imageModules: Record<string, string> = import.meta.glob(
@@ -41,18 +48,16 @@ export default function Gallery() {
   const handleTouchStart = () => stopAutoPlay();
   const handleTouchEnd = () => startAutoPlay();
 
-  // 🔍 Funções de visualização em tela cheia
   const openImage = (src: string) => {
     setSelectedImage(src);
-    window.history.pushState({ modal: true }, ""); // adiciona ao histórico
+    window.history.pushState({ modal: true }, "");
   };
 
   const closeImage = () => {
     setSelectedImage(null);
-    if (window.history.state?.modal) window.history.back(); // volta no histórico
+    if (window.history.state?.modal) window.history.back();
   };
 
-  // 🧱 Fecha o modal se o usuário tocar no botão "voltar" do celular
   useEffect(() => {
     const handlePopState = () => {
       if (selectedImage) setSelectedImage(null);
@@ -100,9 +105,10 @@ export default function Gallery() {
         ))}
       </div>
 
+      {/* Instagram */}
       <div className="mt-12 text-center">
         <a
-          href="https://www.instagram.com/seuperfil"
+          href="https://www.instagram.com/banhoetosaagromania"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-pink-300 hover:scale-105 transition-all text-lg font-semibold"
@@ -112,7 +118,7 @@ export default function Gallery() {
         </a>
       </div>
 
-      {/* 🖼️ Modal da imagem em tela cheia */}
+      {/* Modal da imagem em tela cheia */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4"

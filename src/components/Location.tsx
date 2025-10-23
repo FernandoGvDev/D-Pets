@@ -1,13 +1,21 @@
 // src/components/Location.tsx
 import { motion } from "framer-motion";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import useSEO from "../hooks/useSEO";
 
 export default function Location() {
+  // ✅ SEO
+  useSEO(
+    "Localização D-Pets - Banho, Tosa e Serviços para Pets",
+    "Visite a D-Pets em Alvorada! Endereço, mapa e WhatsApp para agendar banho, tosa e cuidados para seu pet."
+  );
+
   return (
-    <section id="localizacao" className="relative py-20 rounded-3xl bg-gradient-to-b from-white  via-pink-50 to-white overflow-hidden">
-      
+    <section
+      id="localizacao"
+      className="relative py-20 rounded-3xl bg-gradient-to-b from-white via-pink-50 to-white overflow-hidden"
+    >
       <div className="max-w-6xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center gap-12">
-        
         {/* ============================
             📌 Mapa com estilo e animação
         ============================= */}
@@ -28,6 +36,7 @@ export default function Location() {
             allowFullScreen
             loading="lazy"
             className="border-0 relative z-10 rounded-2xl"
+            title="Mapa D-Pets Alvorada"
           ></iframe>
         </motion.div>
 
@@ -64,6 +73,7 @@ export default function Location() {
             whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(107,33,168,0.6)" }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
+            title="Fale conosco no WhatsApp"
           >
             Fale conosco no WhatsApp
             <FaMapMarkerAlt />
