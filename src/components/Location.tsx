@@ -30,7 +30,7 @@ export default function Location() {
           <div className="absolute -top-6 -left-6 w-40 h-40 bg-pink-100 rounded-full blur-3xl opacity-40 z-0"></div>
 
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d863.7025804972303!2d-51.088674871557345!3d-30.013602337155294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951975e7077c9efd%3A0xfa0a9f346406cf45!2sR.%20Mal.%20Humberto%20de%20Alen%C3%A7ar%20Castelo%20Branco%2C%20297%20-%20Aparecida%2C%20Alvorada%20-%20RS%2C%2094850-810%2C%20Brasil!5e0!3m2!1spt-BR!2sus!4v1758856689619!5m2!1spt-BR!2sus"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.81276849037!2d-51.08810389999999!3d-30.0135321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519755bcc9eca49%3A0xe575af0618e4730e!2sD%C2%B4PETS%20EST%C3%89TICA%20ANIMAL%20E%20AGROPET!5e0!3m2!1spt-BR!2sbr!4v1761855441439!5m2!1spt-BR!2sbr"
             width="100%"
             height="100%"
             allowFullScreen
