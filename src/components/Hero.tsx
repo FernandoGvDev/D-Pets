@@ -69,7 +69,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="https://www.instagram.com/banhoetosaagromania"
+                href="https://www.instagram.com/dpets_estetica_animal/#"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Ver fotos e novidades no Instagram"

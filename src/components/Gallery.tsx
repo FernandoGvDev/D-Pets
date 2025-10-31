@@ -108,7 +108,7 @@ export default function Gallery() {
       {/* Instagram */}
       <div className="mt-12 text-center">
         <a
-          href="https://www.instagram.com/banhoetosaagromania"
+          href="https://www.instagram.com/dpets_estetica_animal/#"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-500 via-purple-500 to-yellow-500 text-white px-8 py-4 rounded-full shadow-lg hover:shadow-pink-300 hover:scale-105 transition-all text-lg font-semibold"
