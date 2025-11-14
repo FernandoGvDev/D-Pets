@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { FaPaw, FaHeart, FaBath, FaUtensils, FaDog, FaCut } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 export default function Hotel() {
-  const whatsappLink = `https://wa.me/5551984057577?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Hotel%20Verkoiansk%20Pet%20Hotel.`;
+  const whatsappLink = `https://wa.me/555184057577?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20Hotel%20para%20Pets.`;
 
   return (
     <main className="bg-white text-gray-800">
@@ -142,12 +141,6 @@ export default function Hotel() {
           >
             Falar no WhatsApp
           </a>
-          <Link
-            to="/contato"
-            className="border-2 border-white px-6 py-3 rounded-full hover:bg-white hover:text-pink-600 transition font-semibold"
-          >
-            Saiba mais
-          </Link>
         </div>
       </section>
     </main>
