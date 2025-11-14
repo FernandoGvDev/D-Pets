@@ -1,13 +1,17 @@
 // src/App.tsx
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import { CartProvider } from "./context/CartContext";
+
 import Home from "./pages/home";
 import Catalogo from "./pages/catalogo";
-import { CartProvider } from "./context/CartContext";
 import Checkout from "./pages/Checkout";
 import Sobre from "./pages/sobre";
+import Hotel from "./pages/hotel/index";
+
+import Header from "./components/Header";
 import Footer from "./components/Footer";
+
 import logo from "./assets/img/logo.png";
 
 export default function App() {
@@ -81,6 +85,7 @@ export default function App() {
           <Route path="/catalogo" element={<Catalogo />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/sobre" element={<Sobre />} />
+          <Route path="/hotel" element={<Hotel />} />
         </Routes>
         <div id="contato">
           <Footer />

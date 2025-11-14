@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import useSEO from "../hooks/useSEO";
 
 import Hero from '../components/Hero';
+import HotelPetCTA from '../components/HotelPetCTA';
 import Services from '../components/Services';
 import Banho from '../components/Banho';
 import Gallery from '../components/Gallery';
@@ -51,9 +52,10 @@ export default function Home() {
           />
         </div>
 
+        <HotelPetCTA />
         {/* Conteúdo principal */}
         <div className="mx-auto space-y-16 py-12 overflow-x-hidden">
-          
+
           {/* Seção de Banhos e Pacotes */}
           <Banho />
 
