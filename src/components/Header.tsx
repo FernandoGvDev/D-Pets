@@ -35,13 +35,6 @@ export default function Header() {
               alt="D'Pets"
               className="w-auto h-20 rounded-full object-cover transition-transform duration-500 hover:scale-105"
             />
-            <span
-              className={`font-bold text-lg transition-colors duration-500 ${
-                scrolled ? "text-purple-700" : "text-white"
-              }`}
-            >
-              AgroPet Estética D'Pets
-            </span>
           </Link>
 
           {/* Menu Desktop */}
