@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaWhatsapp, FaStore } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 
 export default function Header() {

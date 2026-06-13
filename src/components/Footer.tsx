@@ -1,5 +1,5 @@
 // src/components/Footer.tsx
-import { FaWhatsapp, FaInstagram, FaCreditCard, FaMoneyBillWave, FaRegHandshake, FaBoxOpen } from "react-icons/fa";
+import { FaWhatsapp, FaInstagram, FaCreditCard, FaMoneyBillWave, FaRegHandshake } from "react-icons/fa";
 
 export default function Footer() {
   return (
