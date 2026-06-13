@@ -66,13 +66,6 @@ export default function Header() {
               </NavLink>
             ))}
 
-            {/* Botão Ver Loja */}
-            <Link
-              to="/catalogo"
-              className="ml-3 flex items-center gap-2 bg-[#FFD700] hover:bg-yellow-400 text-white px-4 py-2 rounded-2xl font-semibold transition-transform transform hover:scale-105 shadow-md"
-            >
-              <FaStore className="w-5 h-5" /> Ver Loja
-            </Link>
 
             {/* Botão WhatsApp */}
             <a
@@ -140,13 +133,6 @@ export default function Header() {
               </NavLink>
             ))}
 
-            <Link
-              to="/catalogo"
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-2 bg-[#FFD700] hover:bg-yellow-400 text-white px-4 py-2 rounded-2xl font-semibold transition-transform transform hover:scale-105 shadow-md"
-            >
-              <FaStore className="w-5 h-5" /> Ver Loja
-            </Link>
 
             <a
               href="https://wa.me/5551984057577"

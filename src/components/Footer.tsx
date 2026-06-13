@@ -11,7 +11,7 @@ export default function Footer() {
         ============================= */}
         <div className="flex flex-col gap-3">
           <h4 className="text-2xl font-bold text-purple-700">D, Pets Estética Animal</h4>
-          <p className="text-sm text-gray-600">Rua Castelo Branco 297 (Loja 02) - Bela Vista, Alvorada</p>
+          <p className="text-sm text-gray-600">Rua Juruá 297 (Sala 02) - Bairro Aparecida, Alvorada</p>
           
           <p className="text-sm flex items-center gap-2">
             <FaWhatsapp className="text-[#25D366]" /> 
@@ -20,12 +20,6 @@ export default function Footer() {
           <p className="text-sm flex items-center gap-2">
             <FaInstagram className="text-[#E1306C]" /> 
             <a className="hover:underline text-[#E1306C]" href="https://www.instagram.com/dpets_estetica_animal/#">@D'Pets</a>
-          </p>
-
-          {/* Link para catálogo */}
-          <p className="text-sm flex items-center gap-2 mt-2">
-            <FaBoxOpen className="text-[#6b21a8]" /> 
-            <a className="hover:underline text-[#6b21a8]" href="/catalogo">Veja nosso Catálogo</a>
           </p>
         </div>
 
