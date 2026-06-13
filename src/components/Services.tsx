@@ -20,14 +20,14 @@ export default function Services() {
     {
       title: "Petiscos & Ração",
       desc: "Marcas selecionadas e snacks saudáveis para cães e gatos.",
-      link: "/catalogo", // catálogo
-      type: "catalogo",
+      link: "https://wa.me/5551984057577", // catálogo
+      type: "whats",
     },
     {
       title: "Brinquedos & Acessórios",
       desc: "Coleiras, camas, brinquedos e acessórios premium para pets.",
-      link: "/catalogo", // catálogo
-      type: "catalogo",
+      link: "https://wa.me/5551984057577", // catálogo
+      type: "whats",
     },
   ];
 
@@ -88,7 +88,7 @@ export default function Services() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Agendar no WhatsApp
+                  chamar no WhatsApp
                 </motion.a>
               )}
 

@@ -63,7 +63,7 @@ export default function Location() {
 
           {/* Subtítulo elegante */}
           <p className="text-gray-700 text-lg max-w-md">
-            Venha nos visitar! Estamos na Rua Castelo Branco 297 (Loja 02), Bela Vista, Alvorada. Um espaço acolhedor para você e seu pet.
+            Venha nos visitar! Estamos na Rua Juruá 297 (Sala 02) - Bairro Aparecida, Alvorada. Um espaço acolhedor para você e seu pet.
           </p>
 
           {/* Botão WhatsApp chamativo */}
